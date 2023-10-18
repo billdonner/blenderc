@@ -5,9 +5,6 @@
 // https://swiftpackageindex.com/apple/swift-argument-parser/documentation
 
 import q20kshare
-
-// write a macOS command line program using ArgumentParser to accept a file an array of X, and another with an array of Y and writes a new file containing an array of Z.
-
 import Foundation
 import ArgumentParser
 
