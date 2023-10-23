@@ -1,14 +1,15 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
-// 
+//
 // Swift Argument Parser
 // https://swiftpackageindex.com/apple/swift-argument-parser/documentation
+
+// kjnkjnkjkjb
+
 
 import q20kshare
 import Foundation
 import ArgumentParser
-
-// OK
 
 enum BlenderError :Error {
   case cantRead
@@ -102,10 +103,9 @@ struct Blender: ParsableCommand {
   }
   throw BlenderError.noChallenges
 }
-
   static let configuration = CommandConfiguration(
-    abstract: "Step 4: Blender merges the data from Veracitator with the data from Prepper, blending in the TopicsData json  and prepares a single output file of gamedata - ReadyforIOS.",
-    version: "0.3.8",
+    abstract: "Step 4: Blender merges the data from Veracitator with the data from Prepper, blending in the TopicsData json  and prepares a single output file of gamedata - ReadyforIOS. xx ",
+    version: "0.5.1",
     subcommands: [],
     defaultSubcommand: nil,
     helpNames: [.long, .short]
@@ -207,14 +207,13 @@ struct Blender: ParsableCommand {
     
     var opinions:[Opinion] = []
     try fetchOpinions(&opinions)
-    print(">Blender: \(opinions.count) Opinions")
+    let fopinions = opinions.compactMap { $0.truth == .trueValue ? $0 : nil}
+    let t = opinions.count - fopinions.count
+    print(">Blender: \(fopinions.count) Opinions \(t) failed liedetector")
     
-    var newChallenges = blend(opinions: opinions, challenges: challenges)
+    var newChallenges = blend(opinions: fopinions, challenges: challenges)
     
     print(">Blender: \(newChallenges.count) Merged")
-    
-    
- 
 
     //1 sort by topic
     newChallenges.sort(){ a,b in
